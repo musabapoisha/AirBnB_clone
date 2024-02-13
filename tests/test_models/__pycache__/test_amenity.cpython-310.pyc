@@ -1,0 +1,48 @@
+o
+
+    >]ębE  ă                   @   s   d Z ddlZddlZddlZddlmZ ddlmZ ddl mZ G dd  d ej	Z
+G dd	 d	ej	ZG d
+d dej	Ze
+dkrEe Ą  dS dS )
+zDefines unittests for models/amenity.py.
+
+Unittest classes:
+    TestAmenity_instantiation
+    TestAmenity_save
+    TestAmenity_to_dict
+é    N)Údatetime)Úsleep)Ú Amenityc                   @   sx   e Zd ZdZdd Zdd Zdd  Zdd	 Z d
+d Zdd
+ Z	dd Z
+dd Zdd Zdd Z
+dd Zdd Zdd ZdS )ÚTestAmenity_instantiationz9Unittests for testing instantiation of the Amenity class.c                 C   s   |   ttt Ą d S ŠN)ÚassertEqualr   ÚtypeŠÚselfŠ r   úL/home/lexxyla/Desktop/Brennan/AirBnB_clone/tests/test_models/test_amenity.pyÚtest_no_args_instantiates   s   z3TestAmenity_instantiation.test_no_args_instantiatesc                 C   s   |   t tj Ą  Ą Ą d S r   )ÚassertInr   ÚmodelsÚ storageÚallÚvaluesr	   r   r   r   Ú#test_new_instance_stored_in_objects   s   z=TestAmenity_instantiation.test_new_instance_stored_in_objectsc                 C   ó   |   ttt jĄ d S r   )r    Ústrr   r   Úidr	   r   r   r   Útest_id_is_public_str   ó   z/TestAmenity_instantiation.test_id_is_public_strc                 C   r   r   )r    r   r   r   Ú
+created_atr	   r   r   r   Ú"test_created_at_is_public_datetime   r   z<TestAmenity_instantiation.test_created_at_is_public_datetimec                 C   r   r   )r    r   r   r   Ú
+updated_atr	   r   r   r   Ú"test_updated_at_is_public_datetime    r   z<TestAmenity_instantiation.test_updated_at_is_public_datetimec                 C   s<   t  }|  ttt jĄ |  dtt  Ą |   d|jĄ d S )NÚname)	r   r    r   r   r   r   ÚdirÚassertNotInÚ__dict__Šr
+   Úamr   r   r   Ú#test_name_is_public_class_attribute#   s   z=TestAmenity_instantiation.test_name_is_public_class_attributec                 C   s    t  }t  }|  |j|jĄ d S r   )r   ÚassertNotEqualr   Šr
+   Zam1Zam2r   r   r   Útest_two_amenities_unique_ids)   s   z7TestAmenity_instantiation.test_two_amenities_unique_idsc                 C   ó(   t  }td t  }|  |j|jĄ d S ŠNgŠ?)r   r   Ú
+assertLessr   r%   r   r   r   Ú'test_two_amenities_different_created_at.   ó   zATestAmenity_instantiation.test_two_amenities_different_created_atc                 C   r'   r(   )r   r   r)   r   r%   r   r   r   Ú'test_two_amenities_different_updated_at4   r+   zATestAmenity_instantiation.test_two_amenities_different_updated_atc                 C   sl   t  Ą }t|}t }d|_| |_|_|  Ą }|  d|Ą |  d|Ą |  d| |Ą |  d| |Ą d S )NÚ123456z[Amenity] (123456)z'id': '123456'z'created_at': z'updated_at': )	r   ÚtodayÚreprr   r   r   r   Ú __str__r   )r
+   ÚdtZ dt_reprr"   Zamstrr   r   r   Útest_str_representation:   s   z1TestAmenity_instantiation.test_str_representationc                 C   s   t d }|  d |j Ą Ą d S r   )r   r   r    r   r!   r   r   r   Útest_args_unusedF   s   z*TestAmenity_instantiation.test_args_unusedc                 C   sL   t  Ą }| Ą }td||d}|  |jdĄ |  |j|Ą |  |j |Ą dS )z%instantiation with kwargs test methodZ345Šr   r   r   N)r   r.   Ú	isoformatr   r    r   r   r   )r
+   r1   Zdt_isor"   r   r   r   Útest_instantiation_with_kwargsJ   s   z8TestAmenity_instantiation.test_instantiation_with_kwargsc                 C   s>   |   tĄ td d d d W d    d S 1 sw   Y  d S )Nr4   )ÚassertRaisesÚ	TypeErrorr   r	   r   r   r   Ú#test_instantiation_with_None_kwargsS   s   "˙z=TestAmenity_instantiation.test_instantiation_with_None_kwargsN)Ú__name__Ú
+__module__Ú__qualname__Ú __doc__r
+   r   r   r   r   r#   r&   r*   r,   r2   r3   r6   r9   r   r   r   r   r      s    	r   c                   @   sD   e Zd ZdZedd Zdd Zdd  Z dd	 Zd
+d Z	dd
+ Z
+dS )ÚTestAmenity_savez7Unittests for testing save method of the Amenity class.c                 C   s(   z	t  ddĄ W d S  ty   Y d S w ŠNú	file.jsonÚtmp)ÚosÚrenameÚ IOErrorr	   r   r   r   ÚsetUp[   s
+   ˙zTestAmenity_save.setUpc                 C   sJ   z t  dĄ W n	 ty   Y nw z	t  ddĄ W d S  ty$   Y d S w r?   )rB   ÚremoverD   rC   r	   r   r   r   ÚtearDownb   s   ˙˙zTestAmenity_save.tearDownc                 C   s.   t  }td |j}| Ą  |  ||jĄ d S r(   Šr   r   r   Úsaver)   )r
+   r"   Úfirst_updated_atr   r   r   Ú
+test_one_savel   s
+   zTestAmenity_save.test_one_savec                 C   sP   t  }td |j}| Ą  |j}|  ||Ą td | Ą  |  ||jĄ d S r(   rH   )r
+   r"   rJ   Zsecond_updated_atr   r   r   Útest_two_savess   s   zTestAmenity_save.test_two_savesc                 C   ó@   t  }|  tĄ | d Ą W d    d S 1 sw   Y  d S r   )r   r7   r8   rI   r!   r   r   r   Útest_save_with_arg~   ó   "˙z#TestAmenity_save.test_save_with_argc                 C   sX   t  }| Ą  d|j }tdd}|  || Ą Ą W d    d S 1 s%w   Y  d S )NzAmenity.r@   Úr)r   rI   r   Úopenr   Úread)r
+   r"   ZamidÚfr   r   r   Útest_save_updates_file   s   
+"˙z'TestAmenity_save.test_save_updates_fileN)r:   r;   r<   r=   ÚclassmethodrE   rG   rK   rL   rN   rT   r   r   r   r   r>   X   s    
+
+ r>   c                   @   sH   e Zd ZdZdd Zdd Zdd  Zdd	 Z d
+d Zdd
+ Z	dd Z
+dS )ÚTestAmenity_to_dictz:Unittests for testing to_dict method of the Amenity class.c                 C   s   |   ttt  Ą Ą d S r   )Ú
+assertTrueÚdictr   r   Ú to_dictr	   r   r   r   Útest_to_dict_type   s   z%TestAmenity_to_dict.test_to_dict_typec                 C   sJ   t  }|  d| Ą Ą |  d| Ą Ą |  d| Ą Ą |  d| Ą Ą d S )Nr   r   r   Ú	__class__)r   r   rY   r!   r   r   r   Ú"test_to_dict_contains_correct_keys   s
+   z6TestAmenity_to_dict.test_to_dict_contains_correct_keysc                 C   s4   t  }d|_d|_|  d|jĄ |  d| Ą Ą d S )NZ	Holbertonéb   Ú	my_number)r   Zmiddle_namer^   r    r   rY   r!   r   r   r   Ú&test_to_dict_contains_added_attributes   s
+   z:TestAmenity_to_dict.test_to_dict_contains_added_attributesc                 C   sN   t  }| Ą }|  tt|d Ą |  tt|d Ą |  tt|d Ą d S )Nr   r   r   )r   rY   r    r   r   )r
+   r"   Z am_dictr   r   r   Ú)test_to_dict_datetime_attributes_are_strs   s
+   z=TestAmenity_to_dict.test_to_dict_datetime_attributes_are_strsc                 C   sJ   t  Ą }t }d|_| |_|_dd| Ą | Ą d}|   | Ą |Ą d S )Nr-   r   )r   r[   r   r   )	r   r.   r   r   r   r   r5   ÚassertDictEqualrY   )r
+   r1   r"   Ztdictr   r   r   Útest_to_dict_outputŚ   s   üz'TestAmenity_to_dict.test_to_dict_outputc                 C   s   t  }|  | Ą |jĄ d S r   )r   r$   rY   r    r!   r   r   r   Ú!test_contrast_to_dict_dunder_dictł   s   z5TestAmenity_to_dict.test_contrast_to_dict_dunder_dictc                 C   rM   r   )r   r7   r8   rY   r!   r   r   r   Útest_to_dict_with_argˇ   rO   z)TestAmenity_to_dict.test_to_dict_with_argN)r:   r;   r<   r=   rZ   r\   r_   r`   rb   rc   rd   r   r   r   r   rV      s       
+rV   Ú__main__)r=   rB   r   Úunittestr   Útimer   Úmodels.amenityr   ÚTestCaser   r>   rV   r:   Úmainr   r   r   r   Ú<module>   s    G32˙

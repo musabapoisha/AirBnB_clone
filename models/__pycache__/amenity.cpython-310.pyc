@@ -1,0 +1,13 @@
+o
+
+    ø£ïbê   ã                   @   s$   d Z ddlmZ G dd„ deƒZdS )zDefines the Amenity class.é    )Ú	BaseModelc                   @   s   e Zd ZdZdZdS )Ú AmenityzXRepresent an amenity.
+
+    Attributes:
+        name (str): The name of the amenity.
+    Ú N)Ú__name__Ú
+__module__Ú__qualname__Ú __doc__Úname© r
+   r
+   ú4/home/lexxyla/Desktop/AirBnB_clone/models/amenity.pyr      s    r   N)r   Úmodels.base_modelr   r   r
+   r
+   r
+   r   Ú<module>   s   

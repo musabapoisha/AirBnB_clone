@@ -1,0 +1,27 @@
+o
+
+    ø£ïbo  ã                   @   s6   d Z ddlZddlmZ ddlmZ G dd„ dƒZdS ) zDefines the BaseModel class.é    N)Úuuid4)Údatetimec                   @   s0   e Zd ZdZdd„ Zdd„ Zdd „ Zdd	„ Z d
+S )Ú	BaseModelz-Represents the BaseModel of the HBnB project.c                 O   s„   d}t tƒ ƒ| _t ¡ | _t ¡ | _t |ƒdkr:| ¡ D ]\}}|dks(|dkr2t 	||¡| j
+|< q|| j
+|< qdS tj 
+| ¡ dS )zInitialize a new BaseModel.
+
+        Args:
+            *args (any): Unused.
+            **kwargs (dict): Key/value pairs of attributes.
+        z%Y-%m-%dT%H:%M:%S.%fr   Ú
+created_atÚ
+updated_atN)Ústrr   Úidr   Útodayr   r   ÚlenÚitemsÚstrptimeÚ__dict__ÚmodelsÚ storageÚnew)ÚselfÚargsÚkwargsZtformÚkÚv© r   ú7/home/lexxyla/Desktop/AirBnB_clone/models/base_model.pyÚ__init__   s    
+
+üzBaseModel.__init__c                 C   s   t  ¡ | _tj ¡  dS )z,Update updated_at with the current datetime.N)r   r	   r   r   r   Úsave)r   r   r   r   r      s   
+zBaseModel.savec                 C   s6   | j  ¡ }| j ¡ |d< | j ¡ |d< | jj|d< |S )z›Return the dictionary of the BaseModel instance.
+
+        Includes the key/value pair __class__ representing
+        the class name of the object.
+        r   r   Ú	__class__) r
+   Úcopyr   Z	isoformatr   r   Ú__name__)r   Zrdictr   r   r   Ú to_dict$   s
+   
+zBaseModel.to_dictc                 C   s   | j j}d || j| j¡S )z>Return the print/str representation of the BaseModel instance.z[{}] ({}) {})r   r   Úformatr   r
+   )r   Zclnamer   r   r   Ú __str__0   s   zBaseModel.__str__N)r   Ú
+__module__Ú__qualname__Ú __doc__r   r   r   r   r   r   r   r   r      s    r   )r"   r   Zuuidr   r   r   r   r   r   r   Ú<module>   s
+   

@@ -1,0 +1,50 @@
+o
+
+    >]ęb&  ă                   @   s   d Z ddlZddlZddlZddlmZ ddlmZ ddl mZ G dd  d ej	Z
+G dd	 d	ej	ZG d
+d dej	Ze
+dkrEe Ą  dS dS )
+z{Defines unittests for models/user.py.
+
+Unittest classes:
+    TestUser_instantiation
+    TestUser_save
+    TestUser_to_dict
+é    N)Údatetime)Úsleep)ÚUserc                   @   s   e Zd ZdZdd Zdd Zdd  Zdd	 Z d
+d Zdd
+ Z	dd Z
+dd Zdd Zdd Z
+dd Zdd Zdd Zdd Zdd Zd d! Zd"S )#ÚTestUser_instantiationz6Unittests for testing instantiation of the User class.c                 C   s   |   ttt Ą d S ŠN)ÚassertEqualr   ÚtypeŠÚselfŠ r   úI/home/lexxyla/Desktop/Brennan/AirBnB_clone/tests/test_models/test_user.pyÚtest_no_args_instantiates   ó   z0TestUser_instantiation.test_no_args_instantiatesc                 C   s   |   t tj Ą  Ą Ą d S r   )ÚassertInr   ÚmodelsÚ storageÚallÚvaluesr	   r   r   r   Ú#test_new_instance_stored_in_objects   s   z:TestUser_instantiation.test_new_instance_stored_in_objectsc                 C   ó   |   ttt jĄ d S r   )r    Ústrr   r   Úidr	   r   r   r   Útest_id_is_public_str   ó   z,TestUser_instantiation.test_id_is_public_strc                 C   r   r   )r    r   r   r   Ú
+created_atr	   r   r   r   Ú"test_created_at_is_public_datetime   r   z9TestUser_instantiation.test_created_at_is_public_datetimec                 C   r   r   )r    r   r   r   Ú
+updated_atr	   r   r   r   Ú"test_updated_at_is_public_datetime    r   z9TestUser_instantiation.test_updated_at_is_public_datetimec                 C   ó   |   tttjĄ d S r   )r    r   r   r   Úemailr	   r   r   r   Útest_email_is_public_str#   r   z/TestUser_instantiation.test_email_is_public_strc                 C   r   r   )r    r   r   r   Úpasswordr	   r   r   r   Útest_password_is_public_str&   r   z2TestUser_instantiation.test_password_is_public_strc                 C   r   r   )r    r   r   r   Ú
+first_namer	   r   r   r   Útest_first_name_is_public_str)   r   z4TestUser_instantiation.test_first_name_is_public_strc                 C   r   r   )r    r   r   r   Ú	last_namer	   r   r   r   Útest_last_name_is_public_str,   r   z3TestUser_instantiation.test_last_name_is_public_strc                 C   s    t  }t  }|  |j|jĄ d S r   )r   ÚassertNotEqualr   Šr
+   Zus1Zus2r   r   r   Útest_two_users_unique_ids/   s   z0TestUser_instantiation.test_two_users_unique_idsc                 C   ó(   t  }td t  }|  |j|jĄ d S ŠNgŠ?)r   r   Ú
+assertLessr   r(   r   r   r   Ú#test_two_users_different_created_at4   ó   z:TestUser_instantiation.test_two_users_different_created_atc                 C   r*   r+   )r   r   r,   r   r(   r   r   r   Ú#test_two_users_different_updated_at:   r.   z:TestUser_instantiation.test_two_users_different_updated_atc                 C   sl   t  Ą }t|}t }d|_| |_|_|  Ą }|  d|Ą |  d|Ą |  d| |Ą |  d| |Ą d S )NÚ123456z[User] (123456)z'id': '123456'z'created_at': z'updated_at': )	r   ÚtodayÚreprr   r   r   r   Ú __str__r   )r
+   ÚdtÚ dt_reprÚusZusstrr   r   r   Útest_str_representation@   s   z.TestUser_instantiation.test_str_representationc                 C   s   t d }|  d |j Ą Ą d S r   )r   ÚassertNotInÚ__dict__r   Šr
+   r6   r   r   r   Útest_args_unusedL   s   z'TestUser_instantiation.test_args_unusedc                 C   sL   t  Ą }| Ą }td||d}|  |jdĄ |  |j|Ą |  |j |Ą d S )NÚ345Šr   r   r   )r   r1   Ú	isoformatr   r    r   r   r   )r
+   r4   Údt_isor6   r   r   r   Útest_instantiation_with_kwargsP   s   z5TestUser_instantiation.test_instantiation_with_kwargsc                 C   s>   |   tĄ td d d d W d    d S 1 sw   Y  d S )Nr=   )ÚassertRaisesÚ	TypeErrorr   r	   r   r   r   Ú#test_instantiation_with_None_kwargsX   s   "˙z:TestUser_instantiation.test_instantiation_with_None_kwargsN)Ú__name__Ú
+__module__Ú__qualname__Ú __doc__r
+   r   r   r   r   r    r"   r$   r&   r)   r-   r/   r7   r;   r@   rC   r   r   r   r   r      s$    r   c                   @   sD   e Zd ZdZedd Zdd Zdd  Z dd	 Zd
+d Z	dd
+ Z
+dS )Ú
+TestUser_savez0Unittests for testing save method of the  class.c                 C   s(   z	t  ddĄ W d S  ty   Y d S w ŠNú	file.jsonÚtmp)ÚosÚrenameÚ IOErrorr	   r   r   r   ÚsetUp`   s
+   ˙zTestUser_save.setUpc                 C   sJ   z t  dĄ W n	 ty   Y nw z	t  ddĄ W d S  ty$   Y d S w rI   )rL   ÚremoverN   rM   r	   r   r   r   ÚtearDowng   s   ˙˙zTestUser_save.tearDownc                 C   s.   t  }td |j}| Ą  |  ||jĄ d S r+   Šr   r   r   Úsaver,   )r
+   r6   Úfirst_updated_atr   r   r   Ú
+test_one_saveq   s
+   zTestUser_save.test_one_savec                 C   sP   t  }td |j}| Ą  |j}|  ||Ą td | Ą  |  ||jĄ d S r+   rR   )r
+   r6   rT   Úsecond_updated_atr   r   r   Útest_two_savesx   s   zTestUser_save.test_two_savesc                 C   ó@   t  }|  tĄ | d Ą W d    d S 1 sw   Y  d S r   )r   rA   rB   rS   r:   r   r   r   Útest_save_with_arg   ó   "˙z TestUser_save.test_save_with_argc                 C   sX   t  }| Ą  d|j }tdd}|  || Ą Ą W d    d S 1 s%w   Y  d S )NzUser.rJ   Úr)r   rS   r   Úopenr   Úread)r
+   r6   ZusidÚfr   r   r   Útest_save_updates_file   s   
+"˙z$TestUser_save.test_save_updates_fileN)rD   rE   rF   rG   ÚclassmethodrO   rQ   rU   rW   rY   r_   r   r   r   r   rH   ]   s    
+
+ rH   c                   @   sH   e Zd ZdZdd Zdd Zdd  Zdd	 Z d
+d Zdd
+ Z	dd Z
+dS )ÚTestUser_to_dictz7Unittests for testing to_dict method of the User class.c                 C   s   |   ttt  Ą Ą d S r   )Ú
+assertTrueÚdictr   r   Ú to_dictr	   r   r   r   Útest_to_dict_type   s   z"TestUser_to_dict.test_to_dict_typec                 C   sJ   t  }|  d| Ą Ą |  d| Ą Ą |  d| Ą Ą |  d| Ą Ą d S )Nr   r   r   Ú	__class__)r   r   rd   r:   r   r   r   Ú"test_to_dict_contains_correct_keys   s
+   z3TestUser_to_dict.test_to_dict_contains_correct_keysc                 C   s4   t  }d|_d|_|  d|jĄ |  d| Ą Ą d S )NÚ	Holbertonéb   Ú	my_number)r   Úmiddle_namerj   r    r   rd   r:   r   r   r   Ú&test_to_dict_contains_added_attributes   s
+   z7TestUser_to_dict.test_to_dict_contains_added_attributesc                 C   sN   t  }| Ą }|  tt|d Ą |  tt|d Ą |  tt|d Ą d S )Nr   r   r   )r   rd   r    r   r   )r
+   r6   Z us_dictr   r   r   Ú)test_to_dict_datetime_attributes_are_strs¤   s
+   z:TestUser_to_dict.test_to_dict_datetime_attributes_are_strsc                 C   sJ   t  Ą }t }d|_| |_|_dd| Ą | Ą d}|   | Ą |Ą d S )Nr0   r   )r   rf   r   r   )	r   r1   r   r   r   r   r>   ÚassertDictEqualrd   )r
+   r4   r6   Útdictr   r   r   Útest_to_dict_outputŤ   s   üz$TestUser_to_dict.test_to_dict_outputc                 C   s   t  }|  | Ą |jĄ d S r   )r   r'   rd   r9   r:   r   r   r   Ú!test_contrast_to_dict_dunder_dict¸   s   z2TestUser_to_dict.test_contrast_to_dict_dunder_dictc                 C   rX   r   )r   rA   rB   rd   r:   r   r   r   Útest_to_dict_with_argź   rZ   z&TestUser_to_dict.test_to_dict_with_argN)rD   rE   rF   rG   re   rg   rl   rm   rp   rq   rr   r   r   r   r   ra      s       
+ra   Ú__main__)rG   rL   r   Úunittestr   Útimer   Úmodels.userr   ÚTestCaser   rH   ra   rD   Úmainr   r   r   r   Ú<module>   s    L32˙
